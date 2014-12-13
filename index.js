@@ -28,10 +28,10 @@ var USAGE = _multiline(function() {/*
         https://github.com/uupaa/ClosureCompiler.js/wiki/ClosureCompiler
 */});
 
-var ERROR = "\u001b[31m";
+var ERR  = "\u001b[31m";
 var WARN = "\u001b[33m";
 var INFO = "\u001b[32m";
-var CLR = "\u001b[0m";
+var CLR  = "\u001b[0m";
 var OUTPUT_FILE = "./.Minify.output.js";
 var TMP_FILE    = "./.Minify.tmp.js";
 

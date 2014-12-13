@@ -1,0 +1,19 @@
+{
+  "name":           "uupaa.closurecompiler.js",
+  "version":        "0.0.0",
+  "description":    "ClosureCompiler warp function.",
+  "url":            "https://github.com/uupaa/ClosureCompiler.js",
+  "keywords":       ["Closure", "Compiler", "Compile", "Unstable"],
+  "repository": {
+    "type":         "git",
+    "url":          "https://github.com/uupaa/ClosureCompiler.js.git"
+  },
+  "scripts": {
+    "sync":         "node ../WebModule/run/sync.js; npm update"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "main":           "index.js",
+  "author":         "uupaa <uupaa.js@gmail.com>",
+  "license":        "Apache License Version 2.0"
+}

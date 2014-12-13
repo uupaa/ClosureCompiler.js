@@ -1,6 +1,6 @@
 {
   "name":           "uupaa.closurecompiler.js",
-  "version":        "0.0.0",
+  "version":        "0.0.1",
   "description":    "ClosureCompiler warp function.",
   "url":            "https://github.com/uupaa/ClosureCompiler.js",
   "keywords":       ["Closure", "Compiler", "Compile", "Unstable"],

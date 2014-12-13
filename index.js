@@ -20,7 +20,6 @@ var USAGE = _multiline(function() {/*
                                 [--strict]
                                 [--pretty]
                                 [--option "compile option"]
-                                [--extern file]
                                 [--output file]
                                 [--source file]
                                 [--label @label]
@@ -119,9 +118,7 @@ function _parseCommandLineOptions(options) {
         case "--keep":      options.keep = true; break;
         case "--simple":    options.advanced = false; break;
         case "--output":    options.output = argv[++i]; break;
-        case "--extern":
         case "--option":    _pushif(options.option, argv[++i]); break;
-        case "--module":
         case "--label":     _pushif(options.label, argv[++i].replace(/^@/, "")); break;
         case "--source":    _pushif(options.source, argv[++i]); break;
         default:

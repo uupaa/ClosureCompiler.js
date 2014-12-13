@@ -23,6 +23,7 @@ var USAGE = _multiline(function() {/*
                                 [--output file]
                                 [--source file]
                                 [--label @label]
+                                [--package]
 
     See:
         https://github.com/uupaa/ClosureCompiler.js/wiki/ClosureCompiler
@@ -58,8 +59,27 @@ var options = _parseCommandLineOptions({
         compile:    true,           // Boolean      - true -> compile.
         verbose:    false,          // Boolean      - true -> verbose mode.
         workDir:    "",             // PathString   - work dir.
+        pkg:        false,          // Boolean      - load package. --package
         advanced:   true            // Boolean      - true -> ADVANCED_OPTIMIZATIONS MODE.
     });
+
+if (options.pkg) { // --package option
+    var pkg = JSON.parse(fs.readFileSync("./package.json"));
+    options.source = pkg.webmodule.source;
+    options.output = pkg.webmodule.output;
+}
+
+// get work dir
+if (!options.workDir) {
+    if (options.output) {
+        if (options.output.indexOf("/") <= 0) {
+            options.workDir = "";
+        } else {
+            // "release/Module.min.js" -> "release/";
+            options.workDir = (options.output.split("/").slice(0, -1)).join("/") + "/";
+        }
+    }
+}
 
 if (options.help) {
     console.log(WARN + USAGE + CLR);
@@ -121,21 +141,13 @@ function _parseCommandLineOptions(options) {
         case "--option":    _pushif(options.option, argv[++i]); break;
         case "--label":     _pushif(options.label, argv[++i].replace(/^@/, "")); break;
         case "--source":    _pushif(options.source, argv[++i]); break;
+        case "--package":   options.pkg = true; break;
         default:
             if ( /^@/.test(argv[i]) ) { // @label
                 _pushif(options.label, argv[i].replace(/^@/, ""));
             } else {
                 throw new Error("Unknown option: " + argv[i]);
             }
-        }
-    }
-    // work dir
-    if (options.output) {
-        if (options.output.indexOf("/") <= 0) {
-            options.workDir = "";
-        } else {
-            // "release/Zzz.min.js" -> "release/";
-            options.workDir = (options.output.split("/").slice(0, -1)).join("/") + "/";
         }
     }
     return options;

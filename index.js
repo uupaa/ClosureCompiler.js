@@ -65,8 +65,17 @@ var options = _parseCommandLineOptions({
 
 if (options.pkg) { // --package option
     var pkg = JSON.parse(fs.readFileSync("./package.json"));
-    options.source = pkg.webmodule.source;
-    options.output = pkg.webmodule.output;
+    var wm = pkg.webmodule;
+    if ("browser" in wm) {
+        options.source = wm.browser.source;
+        options.output = wm.browser.output;
+    } else if ("worker" in wm) {
+        options.source = wm.worker.source;
+        options.output = wm.worker.output;
+    } else if ("node" in wm) {
+        options.source = wm.node.source;
+        options.output = wm.node.output;
+    }
 }
 
 // get work dir

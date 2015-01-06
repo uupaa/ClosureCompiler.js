@@ -66,15 +66,18 @@ var options = _parseCommandLineOptions({
 if (options.pkg) { // --package option
     var pkg = JSON.parse(fs.readFileSync("./package.json"));
     var wm = pkg.webmodule;
-    if ("browser" in wm) {
+    if ("node" in wm) {
+        options.source = wm.node.source;
+        options.output = wm.node.output;
+    } else if ("browser" in wm) {
         options.source = wm.browser.source;
         options.output = wm.browser.output;
     } else if ("worker" in wm) {
         options.source = wm.worker.source;
         options.output = wm.worker.output;
-    } else if ("node" in wm) {
-        options.source = wm.node.source;
-        options.output = wm.node.output;
+    } else if ("nw" in wm) {
+        options.source = wm.nw.source;
+        options.output = wm.nw.output;
     }
 }
 

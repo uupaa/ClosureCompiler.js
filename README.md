@@ -2,20 +2,14 @@
 
 [![npm](https://nodei.co/npm/uupaa.closurecompiler.js.png?downloads=true&stars=true)](https://nodei.co/npm/uupaa.closurecompiler.js/)
 
-ClosureCompiler warp function.
+[ClosureCompiler](https://github.com/google/closure-compiler) warp function.
 
-## Document
+## ClosureCompiler version
 
-- [ClosureCompiler.js wiki](https://github.com/uupaa/ClosureCompiler.js/wiki/ClosureCompiler)
-- [WebModule](https://github.com/uupaa/WebModule)
-    - [Slide](http://uupaa.github.io/Slide/slide/WebModule/index.html)
-    - [Development](https://github.com/uupaa/WebModule/wiki/Development)
+```sh
+$ java -jar compiler.jar --version
 
-## How to use
-
-### Node.js
-
-```js
-$ npm install uupaa.closurecompiler.js
+> Version: v20160619
+> Built on: 2016/06/21 11:20
 
 ```
